@@ -1,0 +1,71 @@
+.home{
+    position: relative;
+    display: inline;
+    direction: rtl;
+    /* right: 2%; */
+    top: 2%;
+}
+.home-p{
+    display: inline;
+    direction: rtl;
+}
+
+.connect{
+    cursor: pointer;
+}
+
+
+/* --------------plant card-------------- */
+/*  */
+:host ::ng-deep .p-card-shadow{
+    width: 90%;
+    margin: 8%;
+    
+}
+
+
+/* :host ::ng-deep .p-card-header{
+
+} */
+
+:host ::ng-deep .p-card .p-card-footer{
+    padding: 0;
+    direction: rtl;
+    text-align: center;
+}
+:host ::ng-deep .p-card .p-card-content{
+    padding: 0;
+    
+}
+:host ::ng-deep .p-card-body{
+    background-color: #E0E0E0;
+    padding: 0;
+}
+
+.allCards {
+    background-color: #DBCAB9;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto;
+    grid-gap: auto;
+}
+
+.p-button-rounded{
+    direction: rtl;
+    margin: 5%;
+}
+
+/* --------------plant info-------------- */
+
+.info-dialog{
+    direction: rtl;
+}
+
+:host ::ng-deep .p-dialog-footer{
+    text-align: center;
+}
+
+:host ::ng-deep .p-dialog-header{
+    direction: rtl;   
+}
+

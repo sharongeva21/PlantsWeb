@@ -1,0 +1,43 @@
+<div class="home">
+    <p class="home-p hello"> {{userName}} שלום, &nbsp; &nbsp;</p>
+    <p class="home-p connect" (click)="userLoginOrRegister()" *ngIf="userName=='אורח'">כניסה</p>
+    <p class="home-p connect" (click)="disconnect(this.userName)" *ngIf="userName!='אורח'">התנתקות</p>
+</div>
+<div class="allCards">
+
+    <p-card styleClass="p-card-shadow" class="card" *ngFor="let img of this.PlantImageNameAndID">
+        <ng-template pTemplate="header">
+            <img alt="Card" src="assets\{{img[0]}}.jpeg" class="card-img">
+        </ng-template>
+
+        <ng-template pTemplate="footer">
+            <button pButton pRipple type="button" label="מידע" class="p-button-rounded p-button-info"
+                (click)="getInfo(img[0], img[1])"></button>
+            <button pButton pRipple type="button" label="רכישה" class="p-button-rounded p-button-success" [disabled]="!this.allowToBuy" (click)="buyPlant(img[0], img[1])"></button>
+        </ng-template>
+    </p-card>
+</div>
+
+<!-- show some information about the chosen plant -->
+<p-dialog header="מידע" [(visible)]="displayInfo" [modal]="true" [closeOnEscape]="true">
+    <p class="info-dialog"><b>ת.ז</b> {{this.info.PlantId}}</p>
+    <p class="info-dialog"><b>שם:</b> {{this.info.plantName}}</p>
+    <p class="info-dialog"><b>הוראות השקיה:</b> {{this.info.plantIrrigationInstructions}}</p>
+    <p class="info-dialog"><b>מיקום:</b> {{this.info.plantPlace}}</p>
+    <p class="info-dialog"><b>מחיר:</b> {{this.info.plantPrice}}</p>
+    <img src="assets\{{this.imgName}}.jpeg" class="info-img">
+    <ng-template pTemplate="footer" class="info-dialog-button">
+        <p-button [disabled]="!this.allowToBuy"  label="המשך לרכישה"  styleClass="p-button-text" (click)="buyPlant(this.info)"></p-button>
+    </ng-template>
+</p-dialog>
+
+
+<p-dialog header="התחברות למערכת" [(visible)]="displayConnect" [modal]="true" [closeOnEscape]="true">
+    <p-button (click)="_login()" label="התחברות" styleClass="p-button-text"></p-button>
+    <p-button (click)="register()" label="הרשמה" styleClass="p-button-text"></p-button>
+</p-dialog>
+
+<p-dialog [(visible)]=" showRegisterOrLogin" [modal]="true">
+    <app-login (userNameLoggedIn)="getUserNameFromLoginOrRegister($event)" [isloginOrRegister]="registerOrLogin"></app-login>
+</p-dialog>
+

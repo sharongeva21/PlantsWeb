@@ -1,0 +1,77 @@
+<div class="forms-div formGroup" *ngIf="showLogin">
+    <form [formGroup]="loginform" (ngSubmit)="onSubmitLogin()">
+        <h3 class="form-header">כניסה למערכת</h3>
+        <div>
+            <input class="form-control" type="text" pInputText placeholder="שם משתמש" formControlName="userName">
+        </div>
+        <div>
+            <input class="form-control" type="number" pInputText placeholder="תעודת זהות" formControlName="ID">
+        </div>
+        <div>
+            <input class="form-control" type="password" pInputText placeholder="סיסמא" formControlName="password">
+        </div>
+        <button class="button-form" type="submit" [disabled]="!loginform.valid">כניסה</button>
+    </form>
+</div>
+
+
+
+
+
+<div class="forms-div" *ngIf="!showLogin">
+    <form [formGroup]="registerform" (ngSubmit)="onSubmitRegister()">
+        <h3 class="form-header">הרשמה למערכת</h3>
+        <div class="col-lg-12">
+            <div>
+                <label for="privateName">שם פרטי</label>
+                <div><input type="text" class="form-control" pInputText placeholder="פרטי"
+                        formControlName="privateName"></div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div>
+                <label for="lastName">שם משפחה</label>
+                <div><input type="text" class="form-control" pInputText placeholder="משפחה" formControlName="lastName">
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-12">
+            <div>
+                <label for="ID">תעודת זהות</label>
+                <div>
+                    <input type="text" class="form-control" pInputText placeholder="123456789" formControlName="ID">
+                    <div
+                        *ngIf="(registerform.controls['ID'].invalid) && (registerform.controls['ID'].dirty) && (registerform.controls['ID'].value.length > 0)">
+                        <span class="error-massage" *ngIf="registerform.controls['ID'].errors ">יש להזין 9 ספרות</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div>
+                <label for="password">סיסמא</label>
+                <div>
+                    <input type="password" class="form-control" pInputText placeholder="" formControlName="password">
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div>
+                <label for="repassword">אשר סיסמא</label>
+                <div>
+                <input type="password" class="form-control" pInputText placeholder="" formControlName="repassword">
+                <div *ngIf="registerform.controls['repassword'].invalid || (registerform.controls['repassword'].dirty)">
+                    <span class="error-massage"
+                        *ngIf="registerform.value.repassword != registerform.value.password">סיסמאות
+                        אינן זהות</span>
+
+                </div>
+            </div>
+
+            </div>
+
+        </div>
+        <button class="button-form" type="submit" [disabled]="!registerform.valid">הירשם</button>
+    </form>
+</div>

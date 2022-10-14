@@ -1,0 +1,31 @@
+.forms-div{
+    top:20%;
+    position: absolute;
+    left: 45%;
+    direction: rtl;
+    border-style: groove;
+    padding: 2%;
+    padding-bottom: 5%;
+
+}
+
+.input-form{
+    margin: 2%;
+}
+
+.button-form {
+    
+    position: absolute;
+    left: 40%;
+    right: 40%;
+    bottom: 3%;
+    background-color: #DEEEEF;
+}
+
+.form-header{
+    text-align: center;
+}
+
+.error-massage{
+    color: red;
+}
